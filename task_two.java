@@ -20,8 +20,10 @@ public class task_two {
             String name = iScanner.next();
             userList.add(name);
         }
-        System.out.println("изначальный список: " + userList);
-        System.out.println(enqueue(userList));
+        // System.out.println("изначальный список: " + userList);
+        // System.out.println(enqueue(userList));
+        // System.out.println(dequeue(userList));
+        first(userList);
     }
 
     public static LinkedList<String> enqueue(List firstList){
@@ -32,5 +34,15 @@ public class task_two {
         firstList.add(temp);
         firstList.remove(temp);
         return (LinkedList<String>) firstList;
+    }
+
+    public static LinkedList<String> dequeue(List firstList){
+        System.out.println("удаляем первый элемент списка: " + firstList.get(0));
+        firstList.remove(0);
+        return (LinkedList<String>) firstList;
+    }
+
+    public static void first(List firstList){
+        System.out.println("первый элемент списка: " + firstList.get(0));
     }
 }
