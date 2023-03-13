@@ -20,10 +20,29 @@ public class task_two {
             String name = iScanner.next();
             userList.add(name);
         }
-        // System.out.println("изначальный список: " + userList);
-        // System.out.println(enqueue(userList));
-        // System.out.println(dequeue(userList));
-        first(userList);
+        System.out.println("изначальный список: " + userList);
+        while (true) {
+            System.out.println("введите команду:\n one-помещает элемент в конец очереди\n two-возвращает первый элемент из очереди и удаляет его\n three-возвращает первый элемент из очереди, не удаляя ");
+            String command = iScanner.next();
+            if (command.equals("one")) {
+                userList = enqueue(userList);
+                System.out.println(userList);
+            }else{
+                if (command.equals("two")){
+                    userList = dequeue(userList);
+                    System.out.println(userList);
+                }else{
+                    if (command.equals("three")){
+                        first(userList);
+                    }else{
+                        System.out.println("введите команду:\n one-помещает элемент в конец очереди\n two-возвращает первый элемент из очереди и удаляет его\n three-возвращает первый элемент из очереди, не удаляя ");
+                    }
+                }
+            
+            }
+        
+        }
+
     }
 
     public static LinkedList<String> enqueue(List firstList){
