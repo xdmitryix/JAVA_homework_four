@@ -1,4 +1,3 @@
-import java.text.BreakIterator;
 import java.util.Scanner;
 
 
@@ -65,12 +64,16 @@ public class task_three {
                 System.out.println("ответ: " + secondResult);
                 firstResult = secondResult;
             }else{
-                secondResult = resultTemp;
-                System.out.println("введи число: ");
-                int numberNext = iScanner.nextInt();
-                resultTemp = finalResult(firstResult, numberNext, symbol2);
-                System.out.println("ответ: " + resultTemp);
-                firstResult = resultTemp;
+                if ((symbol2.equals("+")) || (symbol2.equals("-")) || (symbol2.equals("/")) || (symbol2.equals("*"))){
+                    secondResult = resultTemp;
+                    System.out.println("введи число: ");
+                    int numberNext = iScanner.nextInt();
+                    resultTemp = finalResult(firstResult, numberNext, symbol2);
+                    System.out.println("ответ: " + resultTemp);
+                    firstResult = resultTemp;
+            }else{
+                System.out.println("Некорректный ввод!");
+                }
             }
             
         }
