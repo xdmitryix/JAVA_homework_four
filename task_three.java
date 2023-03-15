@@ -1,3 +1,4 @@
+import java.text.BreakIterator;
 import java.util.Scanner;
 
 
@@ -46,36 +47,73 @@ import java.util.Scanner;
 public class task_three {
 
     public static void main(String[] args) {
-        Scanner iScanner = new Scanner(System.in);
+        Scanner iScanner = new Scanner(System.in, "Cp866");
         System.out.println("введи первое число: ");
         int firstNum = iScanner.nextInt();
         System.out.println("введи второе число: ");
         int secondNum = iScanner.nextInt();
         System.out.println("введи знак для вычисления: ");
         String symbol = iScanner.next();
-        result(firstNum, secondNum, symbol);
+        int firstResult = resultOne(firstNum, secondNum, symbol);
+        int secondResult = firstResult;
+        int resultTemp = firstResult;
+        System.out.println("ответ: " + firstResult);
+        while (true) {
+            System.out.println("введи знак для вычисления(+, -, /, *) или команду 'отмена': ");
+            String symbol2 = iScanner.next();
+            if (symbol2.equals("отмена")) {
+                System.out.println("ответ: " + secondResult);
+                firstResult = secondResult;
+            }else{
+                secondResult = resultTemp;
+                System.out.println("введи число: ");
+                int numberNext = iScanner.nextInt();
+                resultTemp = finalResult(firstResult, numberNext, symbol2);
+                System.out.println("ответ: " + resultTemp);
+                firstResult = resultTemp;
+            }
+            
+        }
+
     }
 
-    public static void result(int numOne, int numSec, String sym){
+    public static int resultOne(int numOne, int numSec, String sym){
         int temp = 0;
         if (sym.equals("+")){
             temp = numOne + numSec;
-            System.out.println(numOne + "+" + numSec + "=" + temp);
         }
         else if (sym.equals("-")){
             temp = numOne - numSec;
-            System.out.println(numOne + "-" + numSec + "=" + temp);
         }
         else if (sym.equals("/")){
             temp = numOne / numSec;
-            System.out.println(numOne + "/" + numSec + "=" + temp);
         }
         else if (sym.equals("*")){
             temp = numOne * numSec;
-            System.out.println(numOne + "*" + numSec + "=" + temp);
         }
         else{
             System.out.println("Некорректный ввод!");
         }
+        return temp;
+    }
+
+    public static int finalResult(int temp, int tempNum, String sym){
+        if (sym.equals("+")){
+            temp = temp + tempNum;
+        }
+        else if (sym.equals("-")){
+            temp = temp - tempNum;
+        }
+        else if (sym.equals("/")){
+            temp = temp / tempNum;
+        }
+        else if (sym.equals("*")){
+            temp = temp * tempNum;
+        }
+        else{
+            System.out.println("Некорректный ввод!");
+        }
+        return temp;
+
     }
 }
